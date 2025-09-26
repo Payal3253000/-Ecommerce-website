@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <!-- Basic -->
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <!-- Mobile Metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+      <!-- Site Metas -->
+      <meta name="keywords" content="" />
+      <meta name="description" content="" />
+      <meta name="author" content="" />
+      <link rel="shortcut icon" href="images/favicon.png" type="">
+      <title>ShopEasy</title>
+      <!-- bootstrap core css -->
+      <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+      <!-- font awesome style -->
+      <link href="css/font-awesome.min.css" rel="stylesheet" />
+      <!-- Custom styles for this template -->
+      <link href="css/style.css" rel="stylesheet" />
+      <!-- responsive style -->
+      <link href="css/responsive.css" rel="stylesheet" />
+      <style>
+         .gallery-section {
+            padding: 90px 0;
+         }
+         .filter-container {
+            margin-bottom: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+         }
+         .filter-btn {
+            padding: 8px 20px;
+            background-color: #f7444e;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+         }
+         .filter-btn:hover, .filter-btn.active {
+            background-color: #002c3e;
+         }
+         .search-box {
+            margin-left: auto;
+            display: flex;
+         }
+         .search-box input {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px 0 0 5px;
+            outline: none;
+         }
+         .search-box button {
+            padding: 8px 15px;
+            background-color: #f7444e;
+            color: white;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+         }
+         .product-box {
+            border: 1px solid #eee;
+            padding: 15px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+            transition: all 0.3s;
+            cursor: pointer;
+         }
+         .product-box:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-5px);
+         }
+         .product-img-box {
+            overflow: hidden;
+            margin-bottom: 15px;
+         }
+         .product-img-box img {
+            width: 100%;
+            transition: all 0.3s;
+         }
+         .product-box:hover .product-img-box img {
+            transform: scale(1.05);
+         }
+         .product-detail {
+            padding: 10px 0;
+         }
+         .product-detail h5 {
+            font-weight: 600;
+            margin-bottom: 5px;
+         }
+         .product-detail h6 {
+            color: #f7444e;
+            font-weight: 600;
+         }
+         .product-detail p {
+            color: #555;
+            font-size: 14px;
+            margin-bottom: 10px;
+         }
+         .modal-product-img img {
+            width: 100%;
+         }
+         .modal-product-detail {
+            padding: 20px;
+         }
+         .modal-product-detail h3 {
+            margin-bottom: 10px;
+         }
+         .modal-product-detail h4 {
+            color: #f7444e;
+            margin-bottom: 15px;
+         }
+         .modal-product-detail p {
+            margin-bottom: 20px;
+         }
+         .modal-action-buttons {
+            display: flex;
+            gap: 10px;
+         }
+         .modal-action-buttons button {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+         }
+         .add-to-cart-btn {
+            background-color: #f7444e;
+            color: white;
+         }
+         .buy-now-btn {
+            background-color: #002c3e;
+            color: white;
+         }
+         .wishlist-btn {
+            background-color: #eee;
+            color: #333;
+         }
+      </style>
+   </head>
+   <body>
+      <div class="hero_area">
+         <!-- header section strats -->
+         <header class="header_section">
+            <div class="container">
+               <nav class="navbar navbar-expand-lg custom_nav-container ">
+                  <a class="navbar-brand" href="index.html"><img width="250" src="images/logo.png" alt="#" /></a>
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class=""> </span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                     <ul class="navbar-nav">
+                        <li class="nav-item">
+                           <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="about.html">About</a>
+                        </li>
+                        <li class="nav-item active">
+                           <a class="nav-link" href="gallery.html">Gallery</a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="cart.html">
+                              <i class="fa fa-shopping-cart"></i>
+                              <span id="cart-count" class="cart-count">0</span>
+                           </a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="wishlist.html">
+                              <i class="fa fa-heart"></i>
+                           </a>
+                        </li>
+                     </ul>
+                  </div>
+               </nav>
+            </div>
+         </header>
+         <!-- end header section -->
+      </div>
+      <!-- gallery section -->
+      <section class="gallery-section">
+         <div class="container">
+            <div class="heading_container heading_center">
+               <h2>
+                  Product <span>Gallery</span>
+               </h2>
+            </div>
+            <div class="filter-container">
+               <button class="filter-btn active" data-category="all">All Products</button>
+               <button class="filter-btn" data-category="clothing">Clothing</button>
+               <button class="filter-btn" data-category="electronics">Electronics</button>
+               <button class="filter-btn" data-category="accessories">Accessories</button>
+               <div class="search-box">
+                  <input type="text" id="search-input" placeholder="Search products...">
+                  <button id="search-btn"><i class="fa fa-search"></i></button>
+               </div>
+            </div>
+            <div class="row" id="product-container">
+               <!-- Products will be loaded here dynamically -->
+            </div>
+         </div>
+      </section>
+      <!-- end gallery section -->
+
+      <!-- Product Detail Modal -->
+      <div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="productModalLabel" aria-hidden="true">
+         <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h5 class="modal-title" id="productModalLabel">Product Detail</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                  </button>
+               </div>
+               <div class="modal-body">
+                  <div class="row">
+                     <div class="col-md-6 modal-product-img">
+                        <img id="modal-product-image" src="" alt="">
+                     </div>
+                     <div class="col-md-6 modal-product-detail">
+                        <h3 id="modal-product-name"></h3>
+                        <h4 id="modal-product-price"></h4>
+                        <p id="modal-product-description"></p>
+                        <div class="modal-action-buttons">
+                           <button class="add-to-cart-btn" id="modal-add-to-cart">Add to Cart</button>
+                           <button class="buy-now-btn" id="modal-buy-now">Buy Now</button>
+                           <button class="wishlist-btn" id="modal-add-to-wishlist"><i class="fa fa-heart"></i></button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <!-- footer section -->
+      <footer class="footer_section">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-4 footer-col">
+                  <div class="footer_contact">
+                     <h4>
+                        Reach at..
+                     </h4>
+                     <div class="contact_link_box">
+                        <a href="">
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        <span>
+                        Location
+                        </span>
+                        </a>
+                        <a href="">
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+                        <span>
+                        Call +01 1234567890
+                        </span>
+                        </a>
+                        <a href="">
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                        <span>
+                        demo@gmail.com
+                        </span>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-4 footer-col">
+                  <div class="footer_detail">
+                     <a href="index.html" class="footer-logo">
+                     ShopEasy
+                     </a>
+                     <p>
+                        Necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with
+                     </p>
+                     <div class="footer_social">
+                        <a href="">
+                        <i class="fa fa-facebook" aria-hidden="true"></i>
+                        </a>
+                        <a href="">
+                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                        </a>
+                        <a href="">
+                        <i class="fa fa-linkedin" aria-hidden="true"></i>
+                        </a>
+                        <a href="">
+                        <i class="fa fa-instagram" aria-hidden="true"></i>
+                        </a>
+                        <a href="">
+                        <i class="fa fa-pinterest" aria-hidden="true"></i>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-4 footer-col">
+                  <div class="map_container">
+                     <div class="map">
+                        <div id="googleMap"></div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="footer-info">
+               <div class="col-lg-7 mx-auto px-0">
+                  <p>
+                     &copy; <span id="displayYear"></span> All Rights Reserved
+                  </p>
+               </div>
+            </div>
+         </div>
+      </footer>
+      <!-- footer section -->
+      
+      <!-- jQery -->
+      <script src="js/jquery-3.4.1.min.js"></script>
+      <!-- popper js -->
+      <script src="js/popper.min.js"></script>
+      <!-- bootstrap js -->
+      <script src="js/bootstrap.js"></script>
+      <!-- custom js -->
+      <script src="js/custom.js"></script>
+      <!-- cart js -->
+      <script src="js/cart.js"></script>
+      <script>
+         // Load cart count on page load
+         document.addEventListener('DOMContentLoaded', function() {
+            updateCartCount();
+         });
+
+         // Get products from localStorage or use default sample data
+         const products = JSON.parse(localStorage.getItem('gallery_products')) || [
+            {
+               id: 1,
+               name: "Men's T-Shirt",
+               price: 29.99,
+               image: "images/p1.png",
+               category: "clothing",
+               description: "Comfortable cotton t-shirt for everyday wear. Available in multiple colors and sizes."
+            },
+            {
+               id: 2,
+               name: "Women's Dress",
+               price: 49.99,
+               image: "images/p2.png",
+               category: "clothing",
+               description: "Elegant dress perfect for casual and semi-formal occasions. Made with high-quality fabric."
+            },
+            {
+               id: 3,
+               name: "Smartphone",
+               price: 499.99,
+               image: "images/electronics/smartphone.svg",
+               category: "electronics",
+               description: "Latest smartphone with advanced features, high-resolution camera, and long battery life."
+            },
+            {
+               id: 4,
+               name: "Laptop",
+               price: 899.99,
+               image: "images/electronics/laptop.svg",
+               category: "electronics",
+               description: "Powerful laptop for work and entertainment with fast processor and high-quality display."
+            },
+            {
+               id: 5,
+               name: "Handbag",
+               price: 79.99,
+               image: "images/p3.png",
+               category: "accessories",
+               description: "Stylish handbag with multiple compartments, perfect for everyday use."
+            },
+            {
+               id: 6,
+               name: "Watch",
+               price: 129.99,
+               image: "images/p4.png",
+               category: "accessories",
+               description: "Elegant watch with leather strap and water-resistant features."
+            },
+            {
+               id: 7,
+               name: "Men's Shoes",
+               price: 89.99,
+               image: "images/p5.png",
+               category: "clothing",
+               description: "Comfortable and durable shoes for everyday wear."
+            },
+            {
+               id: 8,
+               name: "Headphones",
+               price: 149.99,
+               image: "images/p6.png",
+               category: "electronics",
+               description: "High-quality headphones with noise cancellation and superior sound quality."
+            }
+         ];
+
+         // Function to load products
+         function loadProducts(category = 'all') {
+            const container = document.getElementById('product-container');
+            container.innerHTML = '';
+            
+            let filteredProducts = products;
+            
+            // Filter by category if not 'all'
+            if (category !== 'all') {
+               filteredProducts = products.filter(product => product.category === category);
+            }
+            
+            // Filter by search term if exists
+            const searchTerm = document.getElementById('search-input').value.toLowerCase();
+            if (searchTerm) {
+               filteredProducts = filteredProducts.filter(product => 
+                  product.name.toLowerCase().includes(searchTerm) || 
+                  product.description.toLowerCase().includes(searchTerm)
+               );
+            }
+            
+            // Create product elements
+            filteredProducts.forEach(product => {
+               const productElement = document.createElement('div');
+               productElement.className = 'col-sm-6 col-md-4 col-lg-3';
+               productElement.innerHTML = `
+                  <div class="product-box" data-id="${product.id}">
+                     <div class="product-img-box">
+                        <img src="${product.image}" alt="${product.name}">
+                     </div>
+                     <div class="product-detail">
+                        <h5>${product.name}</h5>
+                        <h6>$${product.price.toFixed(2)}</h6>
+                        <p>${product.description.substring(0, 60)}...</p>
+                     </div>
+                  </div>
+               `;
+               container.appendChild(productElement);
+            });
+            
+            // Add click event to product boxes
+            document.querySelectorAll('.product-box').forEach(box => {
+               box.addEventListener('click', function() {
+                  const productId = parseInt(this.getAttribute('data-id'));
+                  openProductModal(productId);
+               });
+            });
+         }
+
+         // Function to open product modal
+         function openProductModal(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+            
+            // Set modal content
+            document.getElementById('modal-product-image').src = product.image;
+            document.getElementById('modal-product-name').textContent = product.name;
+            document.getElementById('modal-product-price').textContent = `$${product.price.toFixed(2)}`;
+            document.getElementById('modal-product-description').textContent = product.description;
+            
+            // Set up action buttons
+            document.getElementById('modal-add-to-cart').onclick = function() {
+               addToCart(product.id, product.name, product.price, product.image);
+               $('#productModal').modal('hide');
+            };
+            
+            document.getElementById('modal-buy-now').onclick = function() {
+               buyNow(product.id, product.name, product.price, product.image);
+            };
+            
+            document.getElementById('modal-add-to-wishlist').onclick = function() {
+               addToWishlist(product.id, product.name, product.price, product.image);
+               $('#productModal').modal('hide');
+            };
+            
+            // Show modal
+            $('#productModal').modal('show');
+         }
+
+         // Event listeners for filter buttons
+         document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', function() {
+               // Remove active class from all buttons
+               document.querySelectorAll('.filter-btn').forEach(btn => {
+                  btn.classList.remove('active');
+               });
+               
+               // Add active class to clicked button
+               this.classList.add('active');
+               
+               // Load products with selected category
+               const category = this.getAttribute('data-category');
+               loadProducts(category);
+            });
+         });
+
+         // Event listener for search
+         document.getElementById('search-btn').addEventListener('click', function() {
+            const activeCategory = document.querySelector('.filter-btn.active').getAttribute('data-category');
+            loadProducts(activeCategory);
+         });
+
+         document.getElementById('search-input').addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') {
+               const activeCategory = document.querySelector('.filter-btn.active').getAttribute('data-category');
+               loadProducts(activeCategory);
+            }
+         });
+
+         // Load all products on page load
+         document.addEventListener('DOMContentLoaded', function() {
+            loadProducts();
+         });
+      </script>
+   </body>
+</html>
